@@ -14,18 +14,28 @@ Deep learning model that classifies pediatric chest X-rays as **Normal** or **Pn
 - **Clinically relevant metrics:** sensitivity, specificity, ROC AUC, not just accuracy
 - **Explainability:** Grad-CAM shows which lung regions drove each prediction
 - **Deployment:** Streamlit app for uploading an image and getting a prediction plus heatmap
+## Results (held-out test set, n = 624)
 
-## Results (test set)
-
-<!-- Fill in your numbers from notebook section 7 -->
 | Metric | Value |
 |---|---|
-| Accuracy | _0.xx_ |
-| Sensitivity (recall) | _0.xx_ |
-| Specificity | _0.xx_ |
-| ROC AUC | _0.xx_ |
+| Accuracy | 92.1% |
+| Sensitivity (pneumonia recall) | 97.2% |
+| Specificity (normal recall) | 83.8% |
+| Precision (Normal / Pneumonia) | 0.947 / 0.909 |
+| F1 (Normal / Pneumonia) | 0.889 / 0.939 |
+| ROC AUC | 0.974 |
 
-![Confusion matrix and ROC](results/confusion_matrix_roc.png)
+|  | Predicted Normal | Predicted Pneumonia |
+|---|---|---|
+| **Actual Normal** | 196 | 38 |
+| **Actual Pneumonia** | 11 | 379 |
+
+The model favours sensitivity: it misses 11 of 390 pneumonia cases, but 38 of 234
+healthy X-rays are flagged as pneumonia.
+
+**Limitations:** paediatric images from a single centre, no external validation.
+This is a research prototype, not a medical device.
+
 
 ## Dataset
 
